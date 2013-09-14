@@ -463,5 +463,5 @@ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a
 
 
 SyntaxHighlighter.config.bloggerMode = true;
-SyntaxHighlighter.config.clipboardSwf = &#39;http://alexgorbatchev.com/pub/sh/current/scripts/clipboard.swf&#39;;
+SyntaxHighlighter.config.clipboardSwf = "http://alexgorbatchev.com/pub/sh/current/scripts/clipboard.swf";
 SyntaxHighlighter.all();
