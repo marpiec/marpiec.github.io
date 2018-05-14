@@ -17,7 +17,7 @@
    version="1.1"
    inkscape:version="0.92.1 r15371"
    sodipodi:docname="lightPin.svg"
-   inkscape:export-filename="C:\Marcin\Projects\marpiec.github.io\lights\newLightOFFLINE.png"
+   inkscape:export-filename="C:\Marcin\Projects\marpiec.github.io\lights\Templates\newLightD.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
   <defs
@@ -58,7 +58,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -68,7 +68,7 @@
      id="layer1"
      transform="translate(0,-992.3622)">
     <path
-       style="opacity:0.98999999;fill:#fefeff;fill-opacity:1;stroke:#ee7b00;stroke-width:0.08109874;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:0.98999999;fill:#ffdc00;fill-opacity:0.82745099;stroke:#ee7b00;stroke-width:0.08109874;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path6219"
        sodipodi:type="arc"
        sodipodi:cx="-28.472788"
