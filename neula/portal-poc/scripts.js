@@ -1,6 +1,6 @@
-const engineMainUrl = "http://aressoftwareltd.localhost:9000/#/screen-portlet/";
-const functionsUrl = "http://aressoftwareltd.localhost:8080/api/functions/portal_poc/"
-const notSecretToken = "44a14fbdde78f38556f6dd1bd2bf52e3462d03b8b4336cfe5f7067d365771c374b27";
+const engineMainUrl = "https://aressoftwareltd.neula.cloud/#/screen-portlet/";
+const functionsUrl = "https://aressoftwareltd.neula.cloud/api/functions/portal_poc/"
+const notSecretToken = "d4bfeceab452be3ae140c48654a028c9379bcfa074f223b76c0eaf9649e2e1b4c1e5";
 // function initSessionId() {
 //     let sessionId = sessionStorage.getItem("sessionId");
 //     if(sessionId === null) {
@@ -67,7 +67,7 @@ function checkSession() {
 
 function openLogin() {
     const element = document.getElementById("enginePage");
-    element.setAttribute("src", engineMainUrl + "19z0ghxezugs4/17y1er60fjtny")
+    element.setAttribute("src", engineMainUrl + "1c9luig3u6x3g/ca05q48d9f8x")
     element.classList.remove("hidden");
 }
 
@@ -85,7 +85,7 @@ function logout() {
 
 function openRegister() {
     const element = document.getElementById("enginePage");
-    element.setAttribute("src", engineMainUrl + "19z0ghxezugs4/c0dtgcy37m1r");
+    element.setAttribute("src", engineMainUrl + "1c9luig3u6x3g/187nr0xaplmv4");
     element.classList.remove("hidden");
 }
 
@@ -93,9 +93,9 @@ function openMainPage() {
     const element = document.getElementById("enginePage");
     const sessionId = getSessionId();
     if(sessionId === null) {
-        element.setAttribute("src", engineMainUrl + "19z0ghxezugs4/1hugyqi6q81lz?session_id=")
+        element.setAttribute("src", engineMainUrl + "1c9luig3u6x3g/z80s3y992a57?session_id=")
     } else {
-        element.setAttribute("src", engineMainUrl + "19z0ghxezugs4/1hugyqi6q81lz?session_id="+sessionId);
+        element.setAttribute("src", engineMainUrl + "1c9luig3u6x3g/z80s3y992a57?session_id="+sessionId);
     }
 }
 
