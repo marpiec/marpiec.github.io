@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Neula based portal</title>
+    <script src="scripts.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css" />
+
+    <script type="text/javascript">
+        // Listen for messages sent from the iFrame
+        const eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        const eventer = window[eventMethod];
+        const messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
+
+        eventer(messageEvent,function(e) {
+
+            // If the message is a resize frame request
+            if (e.data.indexOf('screenPortletResize::') !== -1) {
+                const height = e.data.replace('screenPortletResize::', '');
+                document.getElementById('enginePage').style.height = height+'px';
+            }
+
+            if(e.data.indexOf('screenPortletAttributeChanged::') !== -1) {
+                onScreenPortletAttributeChanged(JSON.parse(e.data.substring("screenPortletAttributeChanged::".length)));
+            }
+        } ,false);
+    </script>
+</head>
+<body>
+
+<h1>Welcome to Neula based Portal</h1>
+
+<h1 id="welcome"></h1>
+
+<div class="navigation">
+    <button id="MainPage" onclick="openMainPage()">Main Page</button>
+    <button id="Register" onclick="openRegister()">Register</button>
+    <button id="Login" onclick="openLogin()">Login</button>
+    <button id="Logout" onclick="logout()">Logout</button>
+</div>
+
+<iframe id="enginePage" class="hidden"></iframe>
+
+</body>
+</html>
