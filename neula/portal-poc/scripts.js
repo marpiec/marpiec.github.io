@@ -1,6 +1,10 @@
-const engineMainUrl = "https://aressoftwareltd.neula.cloud/#/screen-portlet/";
-const functionsUrl = "https://aressoftwareltd.neula.cloud/api/functions/portal_poc/"
-const notSecretToken = "d4bfeceab452be3ae140c48654a028c9379bcfa074f223b76c0eaf9649e2e1b4c1e5";
+const engineMainUrl = "https://woodmall.neula.cloud/#/screen-portlet/";
+const functionsUrl = "https://woodmall.neula.cloud/api/functions/portal_poc/"
+// const engineMainUrl = "http://aressoftwareltd.localhost:9000/#/screen-portlet/";
+// const functionsUrl = "http://aressoftwareltd.localhost:8080/api/functions/portal_poc/"
+// const notSecretToken = "d4bfeceab452be3ae140c48654a028c9379bcfa074f223b76c0eaf9649e2e1b4c1e5";
+const notSecretToken = "5c7285017643837e7b4eb4c60a23ae404f20d6b1ebefaffa4a722a98d06def176730";
+
 // function initSessionId() {
 //     let sessionId = sessionStorage.getItem("sessionId");
 //     if(sessionId === null) {
@@ -35,13 +39,17 @@ function getSessionId() {
 }
 
 
-function callPortalFunction(name, paramsBody, onSuccess) {
+function callPortalFunction(name, paramsBody, onSuccess, onFailure) {
     var xhttp = new XMLHttpRequest();
     xhttp.open('POST', functionsUrl+name);
     xhttp.setRequestHeader ("Authorization", "Bearer " + notSecretToken);
     xhttp.onload = function() {
-        onSuccess(JSON.parse(xhttp.responseText));
-
+        if(this.status === 401) {
+          clearSessionId();
+            onFailure();
+        } else {
+          onSuccess(JSON.parse(xhttp.responseText));
+        }
     }
     xhttp.send(JSON.stringify(paramsBody));
 }
@@ -49,7 +57,7 @@ function callPortalFunction(name, paramsBody, onSuccess) {
 function checkSession() {
     const sessionId = getSessionId();
     if(sessionId != null) {
-        callPortalFunction("checkSession", {session_id: sessionId}, function(userInfo) {
+        callPortalFunction("checkSession", {session_id: sessionId}, (userInfo) => {
             if(userInfo.first_name !== undefined) {
                 document.getElementById("welcome").innerText = "Hello " + userInfo.first_name;
             } else {
@@ -57,6 +65,9 @@ function checkSession() {
                 clearSessionId();
                 updateButtonsVisibility();
             }
+        }, () => {
+            document.getElementById("welcome").innerText = "";
+            updateButtonsVisibility();
         });
     } else {
         document.getElementById("welcome").innerText = "";
@@ -67,7 +78,7 @@ function checkSession() {
 
 function openLogin() {
     const element = document.getElementById("enginePage");
-    element.setAttribute("src", engineMainUrl + "1c9luig3u6x3g/ca05q48d9f8x")
+    element.setAttribute("src", engineMainUrl + "portal_poc/login")
     element.classList.remove("hidden");
 }
 
@@ -79,24 +90,43 @@ function logout() {
         element.setAttribute("src", engineMainUrl + "a/b"); // hack to ensure current screen reload
         clearSessionId();
         updateButtonsVisibility();
+    }, () => {
+        updateButtonsVisibility();
     });
 
 }
 
 function openRegister() {
     const element = document.getElementById("enginePage");
-    element.setAttribute("src", engineMainUrl + "1c9luig3u6x3g/187nr0xaplmv4");
+    element.setAttribute("src", engineMainUrl + "portal_poc/register");
     element.classList.remove("hidden");
 }
 
 function openMainPage() {
     const element = document.getElementById("enginePage");
     const sessionId = getSessionId();
-    if(sessionId === null) {
-        element.setAttribute("src", engineMainUrl + "1c9luig3u6x3g/z80s3y992a57?session_id=")
-    } else {
-        element.setAttribute("src", engineMainUrl + "1c9luig3u6x3g/z80s3y992a57?session_id="+sessionId);
-    }
+
+    element.setAttribute("src", engineMainUrl + "wood_auctions/main_page")
+
+    // if(sessionId === null) {
+    //     element.setAttribute("src", engineMainUrl + "wood_auctions/main_page?session_id=")
+    // } else {
+    //     element.setAttribute("src", engineMainUrl + "wood_auctions/main_page?session_id="+sessionId);
+    // }
+    element.classList.remove("hidden");
+}
+
+function openAuctionsSearch() {
+
+    const element = document.getElementById("enginePage");
+    element.setAttribute("src", engineMainUrl + "wood_auctions/auctions_search")
+    element.classList.remove("hidden");
+}
+
+function openNewAuction() {
+    const element = document.getElementById("enginePage");
+    element.setAttribute("src", engineMainUrl + "wood_auctions/sales_offer")
+    element.classList.remove("hidden");
 }
 
 function updateButtonsVisibility() {

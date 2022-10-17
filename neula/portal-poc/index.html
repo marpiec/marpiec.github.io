@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Neula based portal</title>
     <script src="scripts.js" type="text/javascript"></script>
     <link rel="stylesheet" href="style.css" />
@@ -32,10 +33,16 @@
 <h1 id="welcome"></h1>
 
 <div class="navigation">
-    <button id="MainPage" onclick="openMainPage()">Main Page</button>
+    <button id="MainPage" onclick="openMainPage()">Strona główna</button>
+    <button id="NewsPage" onclick="openNews()">Aktualności</button>
+    <button id="AuctionsPage" onclick="openAuctionsSearch()">Wyszukiwarka aukcji</button>
+    <button id="MyAccountPage" onclick="openNews()">Moje konto</button>
+    <button id="NewAuction" onclick="openNewAuction()">Nowa aukcja</button>
     <button id="Register" onclick="openRegister()">Register</button>
     <button id="Login" onclick="openLogin()">Login</button>
     <button id="Logout" onclick="logout()">Logout</button>
+    <button id="StatutePage" onclick="openStatutePage()">Regulamin</button>
+    <button id="PrivacyPolicyPage" onclick="openPrivacyPolicyPage()">Polityka prywatności</button>
 </div>
 
 <iframe id="enginePage" class="hidden"></iframe>

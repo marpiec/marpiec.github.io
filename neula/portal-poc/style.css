@@ -2,12 +2,23 @@ h1 {
     color: green;
 }
 
+body {
+    background-color: #f6f4f3;
+}
+
 .hidden {
     display: none;
 }
 
 .navigation {
     margin-bottom: 1em;
+}
+
+.navigation button {
+    border: none;
+    background-color: transparent;
+    color: #965f33;
+    cursor: pointer;
 }
 
 
@@ -17,4 +28,8 @@ iframe#enginePage {
     height: 400px;
     width: 100%;
     max-width: 1300px;
+}
+
+iframe#enginePage.hidden {
+    display: none;
 }
