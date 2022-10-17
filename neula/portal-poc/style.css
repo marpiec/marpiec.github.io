@@ -21,6 +21,9 @@ body {
     cursor: pointer;
 }
 
+.navigation button.active {
+    border-bottom: 2px #965f33 solid;
+}
 
 iframe#enginePage {
     display: block;
