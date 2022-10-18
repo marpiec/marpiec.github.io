@@ -28,7 +28,7 @@ body {
 iframe#enginePage {
     display: block;
     border: none;
-    height: 400px;
+    height: 1px;
     width: 100%;
     max-width: 1300px;
 }

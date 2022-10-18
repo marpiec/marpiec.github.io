@@ -4,6 +4,7 @@ const functionsUrl = "https://woodmall.neula.cloud/api/functions/portal_poc/"
 // const functionsUrl = "http://aressoftwareltd.localhost:8080/api/functions/portal_poc/"
 // const notSecretToken = "d4bfeceab452be3ae140c48654a028c9379bcfa074f223b76c0eaf9649e2e1b4c1e5";
 const notSecretToken = "5c7285017643837e7b4eb4c60a23ae404f20d6b1ebefaffa4a722a98d06def176730";
+const portletSettings = "/n-background-color=f6f4f3";
 
 // function initSessionId() {
 //     let sessionId = sessionStorage.getItem("sessionId");
@@ -78,7 +79,7 @@ function checkSession() {
 
 function openLogin() {
     const element = document.getElementById("enginePage");
-    element.setAttribute("src", engineMainUrl + "portal_poc/login")
+    element.setAttribute("src", engineMainUrl + "portal_poc/login" + portletSettings)
     element.classList.remove("hidden");
 }
 
@@ -98,7 +99,7 @@ function logout() {
 
 function openRegister() {
     const element = document.getElementById("enginePage");
-    element.setAttribute("src", engineMainUrl + "portal_poc/register");
+    element.setAttribute("src", engineMainUrl + "portal_poc/register" + portletSettings);
     element.classList.remove("hidden");
 }
 
@@ -106,7 +107,7 @@ function openMainPage() {
     const element = document.getElementById("enginePage");
     const sessionId = getSessionId();
 
-    element.setAttribute("src", engineMainUrl + "wood_auctions/main_page")
+    element.setAttribute("src", engineMainUrl + "wood_auctions/main_page" + portletSettings)
 
     unmarkNavigationButtons();
     markButtonActive("MainPage");
@@ -132,7 +133,7 @@ function unmarkNavigationButtons() {
 function openAuctionsSearch() {
 
     const element = document.getElementById("enginePage");
-    element.setAttribute("src", engineMainUrl + "wood_auctions/auctions_search")
+    element.setAttribute("src", engineMainUrl + "wood_auctions/auctions_search" + portletSettings)
     element.classList.remove("hidden");
 
     unmarkNavigationButtons();
@@ -141,7 +142,7 @@ function openAuctionsSearch() {
 
 function openNewAuction() {
     const element = document.getElementById("enginePage");
-    element.setAttribute("src", engineMainUrl + "wood_auctions/sales_offer")
+    element.setAttribute("src", engineMainUrl + "wood_auctions/sales_offer" + portletSettings)
     element.classList.remove("hidden");
 
     unmarkNavigationButtons();
