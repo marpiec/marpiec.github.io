@@ -15,7 +15,7 @@ const portletSettings = "/n-background-color=f6f4f3";
 // }
 
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
     updateButtonsVisibility();
     openMainPage();
     checkSession();
@@ -27,11 +27,13 @@ function clearSessionId() {
     openMainPage();
     checkSession();
 }
+
 function storeSessionId(sessionId) {
     sessionStorage.setItem("sessionId", sessionId);
     openMainPage();
     checkSession();
 }
+
 function getSessionId() {
     return sessionStorage.getItem("sessionId");
 }
@@ -39,14 +41,18 @@ function getSessionId() {
 
 function callPortalFunction(name, paramsBody, onSuccess, onFailure) {
     var xhttp = new XMLHttpRequest();
-    xhttp.open('POST', functionsUrl+name);
-    xhttp.setRequestHeader ("Authorization", "Bearer " + notSecretToken);
-    xhttp.onload = function() {
-        if(this.status === 401) {
-          clearSessionId();
+    xhttp.open('POST', functionsUrl + name);
+    xhttp.setRequestHeader("Authorization", "Bearer " + notSecretToken);
+    xhttp.onload = function () {
+        if (this.status === 401) {
+            clearSessionId();
             onFailure();
         } else {
-          onSuccess(JSON.parse(xhttp.responseText));
+            try {
+                onSuccess(JSON.parse(xhttp.responseText));
+            } catch (e) {
+                console.log("Unable to parse response " + this.status + " " + xhttp.responseText);
+            }
         }
     }
     xhttp.send(JSON.stringify(paramsBody));
@@ -54,9 +60,9 @@ function callPortalFunction(name, paramsBody, onSuccess, onFailure) {
 
 function checkSession() {
     const sessionId = getSessionId();
-    if(sessionId != null) {
+    if (sessionId != null) {
         callPortalFunction("checkSession", {session_id: sessionId}, (userInfo) => {
-            if(userInfo.first_name !== undefined) {
+            if (userInfo.first_name !== undefined) {
                 document.getElementById("welcome").innerText = "Hello " + userInfo.first_name;
             } else {
                 document.getElementById("welcome").innerText = "";
@@ -72,6 +78,7 @@ function checkSession() {
         updateButtonsVisibility();
     }
 }
+
 // initSessionId();
 
 function openLogin() {
@@ -160,9 +167,9 @@ function showButton(id, visible) {
 
 
 function onScreenPortletAttributeChanged(param) {
-    if(param[0] === "session_id") {
+    if (param[0] === "session_id") {
         storeSessionId(param[1]);
-        console.log("Session: '" + param[1]+"'");
+        console.log("Session: '" + param[1] + "'");
     }
     updateButtonsVisibility();
 }
