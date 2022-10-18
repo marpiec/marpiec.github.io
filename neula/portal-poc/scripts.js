@@ -63,7 +63,7 @@ function checkSession() {
     if (sessionId != null) {
         callPortalFunction("checkSession", {session_id: sessionId}, (userInfo) => {
             if (userInfo.first_name !== undefined) {
-                document.getElementById("welcome").innerText = "Hello " + userInfo.first_name;
+                document.getElementById("welcome").innerText = "Hello " + userInfo.name;
             } else {
                 document.getElementById("welcome").innerText = "";
                 clearSessionId();
