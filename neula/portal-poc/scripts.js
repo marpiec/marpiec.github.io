@@ -1,8 +1,5 @@
 const engineMainUrl = "https://woodmall.neula.cloud/#/screen-portlet/";
-const functionsUrl = "https://woodmall.neula.cloud/api/functions/portal_poc/"
-// const engineMainUrl = "http://aressoftwareltd.localhost:9000/#/screen-portlet/";
-// const functionsUrl = "http://aressoftwareltd.localhost:8080/api/functions/portal_poc/"
-// const notSecretToken = "d4bfeceab452be3ae140c48654a028c9379bcfa074f223b76c0eaf9649e2e1b4c1e5";
+const functionsUrl = "https://woodmall.neula.cloud/api/functions/wood_auctions/"
 const notSecretToken = "5c7285017643837e7b4eb4c60a23ae404f20d6b1ebefaffa4a722a98d06def176730";
 const portletSettings = "/n-background-color=f6f4f3";
 
@@ -79,7 +76,7 @@ function checkSession() {
 
 function openLogin() {
     const element = document.getElementById("enginePage");
-    element.setAttribute("src", engineMainUrl + "portal_poc/login" + portletSettings)
+    element.setAttribute("src", engineMainUrl + "wood_auctions/login" + portletSettings)
     element.classList.remove("hidden");
 }
 
@@ -99,7 +96,7 @@ function logout() {
 
 function openRegister() {
     const element = document.getElementById("enginePage");
-    element.setAttribute("src", engineMainUrl + "portal_poc/register" + portletSettings);
+    element.setAttribute("src", engineMainUrl + "wood_auctions/register" + portletSettings);
     element.classList.remove("hidden");
 }
 
