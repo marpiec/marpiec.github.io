@@ -113,8 +113,6 @@ function openMainPage() {
     const sessionId = getSessionId();
 
     element.setAttribute("src", engineMainUrl + "wood_auctions/main_page" + portletSettings)
-
-    unmarkNavigationButtons();
     markButtonActive("MainPage");
 
     // if(sessionId === null) {
@@ -126,13 +124,10 @@ function openMainPage() {
 }
 
 function markButtonActive(elementId) {
-    document.getElementById(elementId).classList.add("active");
-}
-
-function unmarkNavigationButtons() {
     Array.from(document.querySelectorAll('.navigation button')).forEach((el) => {
         el.classList.remove('active');
     });
+    document.getElementById(elementId).classList.add("active");
 }
 
 function openAuctionsSearch() {
@@ -141,7 +136,6 @@ function openAuctionsSearch() {
     element.setAttribute("src", engineMainUrl + "wood_auctions/auctions_search" + portletSettings)
     element.classList.remove("hidden");
 
-    unmarkNavigationButtons();
     markButtonActive("AuctionsPage");
 }
 
@@ -150,7 +144,6 @@ function openNewAuction() {
     element.setAttribute("src", engineMainUrl + "wood_auctions/sales_offer" + portletSettings)
     element.classList.remove("hidden");
 
-    unmarkNavigationButtons();
     markButtonActive("NewAuction");
 }
 
