@@ -105,6 +105,7 @@ function openRegister() {
     const element = document.getElementById("enginePage");
     element.setAttribute("src", engineMainUrl + "wood_auctions/user_registration" + portletSettings);
     element.classList.remove("hidden");
+    markButtonActive("Register");
 }
 
 function openMainPage() {
