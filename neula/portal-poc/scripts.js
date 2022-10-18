@@ -62,7 +62,7 @@ function checkSession() {
     const sessionId = getSessionId();
     if (sessionId != null) {
         callPortalFunction("checkSession", {session_id: sessionId}, (userInfo) => {
-            if (userInfo.first_name !== undefined) {
+            if (userInfo.name !== undefined) {
                 document.getElementById("welcome").innerText = "Hello " + userInfo.name;
             } else {
                 document.getElementById("welcome").innerText = "";
