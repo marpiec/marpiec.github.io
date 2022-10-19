@@ -85,6 +85,7 @@ function openLogin() {
     const element = document.getElementById("enginePage");
     element.setAttribute("src", engineMainUrl + "wood_auctions/login" + portletSettings)
     element.classList.remove("hidden");
+    markButtonActive("Login");
 }
 
 function logout() {
