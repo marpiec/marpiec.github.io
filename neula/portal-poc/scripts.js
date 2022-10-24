@@ -148,6 +148,15 @@ function openNewAuction() {
     markButtonActive("NewAuction");
 }
 
+function openMyAccountPage() {
+    const element = document.getElementById("enginePage");
+    element.setAttribute("src", engineMainUrl + "wood_auctions/password_change" + portletSettings)
+    element.classList.remove("hidden");
+
+    markButtonActive("MyAccountPage");
+}
+
+
 function updateButtonsVisibility() {
     const sessionId = getSessionId();
     const loggedIn = sessionId !== null;
