@@ -150,8 +150,14 @@ function openNewAuction() {
 
 function openMyAccountPage() {
     const element = document.getElementById("enginePage");
-    element.setAttribute("src", engineMainUrl + "wood_auctions/password_change" + portletSettings)
     element.classList.remove("hidden");
+
+    const pageName = "wood_auctions/password_change";
+    if(sessionId === null) {
+        element.setAttribute("src", engineMainUrl + pageName+portletSettings+"?session_id=")
+    } else {
+        element.setAttribute("src", engineMainUrl + pageName+portletSettings+"?session_id="+sessionId);
+    }
 
     markButtonActive("MyAccountPage");
 }
@@ -163,6 +169,7 @@ function updateButtonsVisibility() {
     showButton("Login", !loggedIn);
     showButton("Logout", loggedIn);
     showButton("Register", !loggedIn);
+    showButton("MyAccountPage", loggedIn);
 }
 
 function showButton(id, visible) {
