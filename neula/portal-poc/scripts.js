@@ -152,6 +152,8 @@ function openMyAccountPage() {
     const element = document.getElementById("enginePage");
     element.classList.remove("hidden");
 
+    const sessionId = getSessionId();
+
     const pageName = "wood_auctions/password_change";
     if(sessionId === null) {
         element.setAttribute("src", engineMainUrl + pageName+portletSettings+"?session_id=")
